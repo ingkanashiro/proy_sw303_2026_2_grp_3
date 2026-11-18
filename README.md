@@ -23,26 +23,26 @@
 
 ## entregable 1 - analisis y diseño
 
-- [documento de requerimientos funcionales y no funcionales](https://docs.google.com/document/d/1f46a-UbFH6W8oEE6eUeU82iCV2IgYLvf8OqYtClyeFk/edit?tab=t.0 "Requerimientos - Google Docs")
-- [descripcion de modulos](https://docs.google.com/document/d/18xV44k2wVk0CzNk_QWs1dzL1oGvMFAe71MYScrKDb_4/edit?tab=t.0 "Modulos - Google Docs"):
+- [x] [documento de requerimientos funcionales y no funcionales](https://docs.google.com/document/d/1f46a-UbFH6W8oEE6eUeU82iCV2IgYLvf8OqYtClyeFk/edit?tab=t.0 "Requerimientos - Google Docs")
+- [x] [descripcion de modulos](https://docs.google.com/document/d/18xV44k2wVk0CzNk_QWs1dzL1oGvMFAe71MYScrKDb_4/edit?tab=t.0 "Modulos - Google Docs"):
   - entrada
   - modelo_estructura
   - equilibrio
   - sistema_lineal
   - resultados
   - visualizacion
-- [diagrama de casos de uso](https://docs.google.com/document/d/1vqN55x4d67PPbO8DnA9DVjC6ano8cegGEeHTyarshYk/edit?tab=t.0 "Casos de Uso - Google docs"):
+- [x] [diagrama de casos de uso](https://docs.google.com/document/d/1vqN55x4d67PPbO8DnA9DVjC6ano8cegGEeHTyarshYk/edit?tab=t.0 "Casos de Uso - Google docs"):
   - cargar estructura
   - analizar
   - consultar fuerzas
   - exportar resultados
-- [diagrama de flujo](https://docs.google.com/document/d/1JdA212bf6ynkA1c9qMKAtuAMOu2UCuJp0mDPw-cPY58/edit?tab=t.0 "Diagrama de Flujo - Google Docs")
+- [x] [diagrama de flujo](https://docs.google.com/document/d/1JdA212bf6ynkA1c9qMKAtuAMOu2UCuJp0mDPw-cPY58/edit?tab=t.0 "Diagrama de Flujo - Google Docs")
   1. lectura
   2. validacion
   3. formulacion del sistema
   4. resolucion
   5. resultados
-- [modelo matematico](https://docs.google.com/document/d/1ox92wEjSBvs_TlkUbfddUi10NSxnJiupDpO7Oy_wjTk/edit?tab=t.0 "Modelo Matematico - Google Docs") con:
+- [x] [modelo matematico](https://docs.google.com/document/d/1ox92wEjSBvs_TlkUbfddUi10NSxnJiupDpO7Oy_wjTk/edit?tab=t.0 "Modelo Matematico - Google Docs") con:
   - supuestos
   - unidades
   - un caso de prueba de referencia
