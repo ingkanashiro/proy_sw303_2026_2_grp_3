@@ -21,7 +21,7 @@
 - [ ] generar un reporte csv con las fuerzas calculadas
 - [ ] mostrar un esquema 2d de la armadura y una representacion de las fuerzas mediante colors o simbolos
 
-## entregable 1 - analisis y diseño
+- [x] ## entregable 1 - analisis y diseño
 
 - [x] [documento de requerimientos funcionales y no funcionales](https://docs.google.com/document/d/1f46a-UbFH6W8oEE6eUeU82iCV2IgYLvf8OqYtClyeFk/edit?tab=t.0 "Requerimientos - Google Docs")
 - [x] [descripcion de modulos](https://docs.google.com/document/d/18xV44k2wVk0CzNk_QWs1dzL1oGvMFAe71MYScrKDb_4/edit?tab=t.0 "Modulos - Google Docs"):
@@ -46,6 +46,9 @@
   - supuestos
   - unidades
   - un caso de prueba de referencia
+
+sacamos AD 🎉🎉
+---
 
 ## entregable 2 - implementacion
 
