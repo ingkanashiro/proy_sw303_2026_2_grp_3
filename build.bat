@@ -1,1 +1,1 @@
-gcc src/main.c -Ilib -Llib -lraylib -lgdi32 -lwinmm -o main.exe -O3
+gcc src/main.c -Ilib -Llib -lraylib -lgdi32 -lwinmm -o bin/main.exe -O3
