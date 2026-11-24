@@ -11,7 +11,8 @@ int fetchData(FILE* file, char*** data) {
 
     int lines = 0;
     while (fgets(buffer, sizeof(buffer), file) != NULL) {
-        strcpy((*data)[lines], buffer);
+        
+        (*data)[lines] = strdup(buffer);
         lines++;
     }
 
