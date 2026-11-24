@@ -125,9 +125,6 @@ Data interpretData(char** data) {
     return out;
 }
 
-/* Recorre los datos recibidos, correspondientes a los nodos de la estructura, y
-los interpreta  en un arreglo de estructuras Node, el cual guarda en el
-parámetro nodes. Devuelve la cantidad de nodos interpretados */
 int getNodes(char** data, Node** nodes) {
     int i = 0;
 

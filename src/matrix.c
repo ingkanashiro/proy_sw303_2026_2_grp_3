@@ -1,6 +1,6 @@
 #include "../include/matrix.h"
 
-int solveSystem(float* A, int n, float** x, float* B) {
+int solveSystem(float* A, float** x, float* B, int n) {
   // validar n > 0
   // asumimos A cuadrado (confia)
   // mediante axioma de transitivdad, `determinant` tambien confia
