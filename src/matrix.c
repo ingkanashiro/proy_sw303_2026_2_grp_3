@@ -1,27 +1,119 @@
 #include "../include/matrix.h"
 
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct GraphNode {
+  int index;
+  struct GraphNode** connections;
+} GraphNode;
+
+int dfs(int u, GraphNode* rows, int* vis, int* mc) {
+  for (int k = 0; rows[u].connections[k] != NULL; k++) {
+    int v = rows[u].connections[k]->index;
+    if (vis[v]) continue;
+    vis[v] = 1; // FUCK it was this
+    if (mc[v] < 0 || dfs(mc[v], rows, vis, mc)) {
+      mc[v] = u;
+      return 1;
+    }
+  }
+  return 0;
+}
+
+void printMatrix(float* A, int n) {
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      printf("%lf\t", A[i * n + j]);
+    }
+    printf("\n");
+  }
+}
+
 int solveSystem(float* A, int n, float** x, float* B) {
   // validar n > 0
   // asumimos A cuadrado (confia)
   // mediante axioma de transitivdad, `determinant` tambien confia
-  /*
-  
-  9 0 2
-  3 6 4
-  3 5 7
-  
-  */
-  
-  
-  for (int k = 0; k < n; k++) {
-    A[k * n];
+
+  GraphNode rows[n];
+  GraphNode cols[n];
+  int c[n];
+
+  for (int i = 0; i < n; i++) {
+    rows[i].index = i;
+    rows[i].connections = malloc((n + 1) * sizeof(GraphNode*));
+    cols[i].index = i;
+    cols[i].connections = malloc((n + 1) * sizeof(GraphNode*));
+    c[i] = 0;
+  }
+
+  for (int i = 0; i < n; i++) {
+    int k = 0;
+    for (int j = 0; j < n; j++) {
+      if (fabsf(A[i * n + j]) > 1e-6) {
+        rows[i].connections[k++] = &cols[j];
+        cols[j].connections[c[j]++] = &rows[i];
+      }
+    }
+    rows[i].connections[k] = NULL;
+    // 
+  }
+
+  for (int j = 0; j < n; j++) cols[j].connections[c[j]] = NULL;
+
+  int mc[n];
+  for (int i = 0; i < n; i++) mc[i] = -1;
+  // mc[i] = 0;
+  int matched = 0;
+  for (int u = 0; u < n; u++) {
+    int vis[n];
+    for (int i = 0; i < n; i++) vis[i] = 0; // XD
+    if (dfs(u, rows, vis, mc)) matched++;
+  }
+
+  if (matched < n) return 0;
+
+  GraphNode super[n];
+
+  for (int j = 0; j < n; j++) {
+    super[j].index = j;
+    super[j].connections = malloc((n + 1) * sizeof(GraphNode));
+    int r = mc[j];
+    int s = 0;
+    for (int k = 0; rows[r].connections[k] != NULL; k++) {
+      int v = rows[r].connections[k]->index;
+      if (v != j) {
+        super[j].connections[s++] = &super[v];
+      }
+    }
+    super[j].connections[s] = NULL;
+  }
+
+  printMatrix(A, n);
+  printf("%d\n", n);
+
+  // for (int k = 0; k < n; k++) {
+    // for (int i = 0; i < n; i++) {
+      // printf("%d\n", super[k].connections[i]->index);
+    // }
     // WHAT DO I FUCKING DO
     // FUCK
-  }
+  // }
+  for (int i = 0; i < n; i++) {
+    free(rows[i].connections);
+    free(cols[i].connections);
+    free(super[i].connections);
+  };
   return 0;
 };
 
 float determinant(float* A, int n) {
+  if (n == 3)
+    return A[0] * (A[4] * A[8] - A[5] * A[7]) -
+           A[1] * (A[3] * A[8] - A[5] * A[6]) +
+           A[2] * (A[3] * A[7] - A[4] * A[6]);
+  if (n == 2) return A[0] * A[3] - A[1] * A[2];
   if (n == 1) return A[0];
   float s = 0;
   int j = 0;

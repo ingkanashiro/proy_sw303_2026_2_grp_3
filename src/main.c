@@ -45,7 +45,6 @@ int main(int argc, char **argv) {
       // nay
     }
 
-    /*/
     int n = 3;
     float* A = calloc(n * n, sizeof(float));
     A[0] = 5.0f;
@@ -57,7 +56,9 @@ int main(int argc, char **argv) {
     A[6] = 6.0f;
     A[7] = 4.0f;
     A[8] = 1.0f;
-    printf("%lf", determinant(A, n));
-    */
+    printf("%lf\n", determinant(A, n));
+    float** x;
+    float* B;
+    solveSystem(A, n, x, B);
     return 0;
 }
