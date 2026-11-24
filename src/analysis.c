@@ -1,4 +1,4 @@
-#include "../include/equilibrium.h"
+#include "../include/analysis.h"
 #include <math.h>
 
 #define EPSILON 1e-6

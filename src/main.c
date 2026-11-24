@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "../include/equilibrium.h"
+#include "../include/analysis.h"
 #include "../include/input.h"
 #include "../include/modelling.h"
 
@@ -32,7 +32,11 @@ int main(int argc, char **argv) {
     fetchData(file, &raw_data);
     Data data = interpretData(raw_data);
 
-    printf("%d\n", isBalanced(data.weights, data.w, data.supports, data.s));
+    int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
+    if (balanced == -1) {
+      printf("[ERROR] Cannot know the state of system, amount of weights or supports might be incorrect'\n");
+      return ERROR_FORBIDDEN; // FORBIDDEN de manera provisional
+    }
 
     return 0;
 }
