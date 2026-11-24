@@ -15,6 +15,9 @@ int fetchData(FILE* file, char*** data) {
         lines++;
     }
 
+    // set end of list as null
+    (*data)[lines] = NULL; 
+
     fclose(file);
     return lines;
 }
