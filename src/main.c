@@ -59,6 +59,6 @@ int main(int argc, char **argv) {
     printf("%lf\n", determinant(A, n));
     float** x;
     float* B;
-    solveSystem(A, n, x, B);
+    solveSystem(A, x, B, n);
     return 0;
 }
