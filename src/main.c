@@ -7,6 +7,7 @@
 #define ERROR_SYNTAX 400
 #define ERROR_FORBIDDEN 403
 #define ERROR_NOT_FOUND 404
+#define ERROR_IM_A_TEAPOT 418
 
 int main(int argc, char** argv) {
   FILE* file;
