@@ -18,4 +18,4 @@ int isBalanced(Weight* weights, int w, Support* supports, int s) {
   // no usamos fuerzas axiales ya que se cancelan entre si, no es necesario
   // sumarlas aqui we dont use axial forces since theyll cancel out anyways,
   // so its not necessary really to add them here
-};
+}
