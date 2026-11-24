@@ -1,4 +1,6 @@
 // structs
+#ifndef TYPES_H
+#define TYPES_H
 
 /* La estructura Node contiene la información de un nodo de la estructura plana,
 esto es, sus coordenadas */
@@ -40,3 +42,5 @@ typedef struct data {
   Support* supports;
   int n, b, w, s;
 } Data;
+
+#endif

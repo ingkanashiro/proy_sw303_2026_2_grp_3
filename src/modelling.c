@@ -22,12 +22,12 @@ Data interpretData(char** data) {
 
     int read_mode = R_NOTDEF; 
 
-    int is_syntax_error = 0;
+    int kill_switch = 0;
     for (int i = 0; data[i] != NULL; i++) {
 
         if (data[i][0] == '?') continue;
 
-        if (is_syntax_error) {
+        if (kill_switch) {
             nodes = NULL; bars = NULL; weights = NULL; supports = NULL;
             n = -1; b = -1; w = -1; s = -1;
             break;
@@ -48,24 +48,44 @@ Data interpretData(char** data) {
                 case R_NODES:
 
                     n = getNodes(data + i, &nodes);
+
+                    if (n == -1) {
+                        kill_switch = 1; 
+                    }
+
                     i += (n-1);
                     break;
 
                 case R_BARS:
                     
                     b = getBars(data + i, &bars, nodes, n);
+
+                    if (b == -1) {
+                        kill_switch = 1; 
+                    }
+
                     i += (b-1);
                     break;
 
                 case R_WEIGHTS:
 
                     w = getWeights(data + i, &weights, nodes, n);
+
+                    if (w == -1) {
+                        kill_switch = 1; 
+                    }
+
                     i += (w-1);
                     break;
 
                 case R_SUPPORTS:
 
-                    s = getSupports(data, &supports, nodes, n);
+                    s = getSupports(data + i, &supports, nodes, n);
+
+                    if (s == -1) {
+                        kill_switch = 1; 
+                    }
+
                     i += (s-1);
                     break;
 
