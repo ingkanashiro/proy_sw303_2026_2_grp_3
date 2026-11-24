@@ -1,4 +1,5 @@
 #include "../include/input.h"
+#include "../include/modelling.h"
 #include <string.h>
 
 #define ERROR_SYNTAX 400
@@ -21,6 +22,11 @@ int main(int argc, char** argv) {
         printf("[ERROR] File '%s' could not be found.\n", path);
         return ERROR_NOT_FOUND;
     }
+
+    char **raw_data = malloc(2048 * 256 * sizeof(char));
+    fetchData(file, &raw_data);
+
+    Data data = interpretData(raw_data);
 
     return 0; 
 }

@@ -1,6 +1,7 @@
-#ifndef MODELING_H
-#define MODELING_H
+#ifndef MODELLING_H
+#define MODELLING_H
 
+#include <stdio.h>
 #include <stdlib.h> // creo q esto deberia ir en modeling.c
 #include "types.h"
 
@@ -17,16 +18,16 @@ int getNodes(char** data, Node** nodes);
 /* Recorre los datos recibidos, correspondientes a las barras de la estructura,
 y los interpreta  en  un  arreglo  de  estructuras  Bar,  el  cual  guarda  en
 el  parámetro  bars. Devuelve la cantidad de barras interpretadas */
-int getBars(char** data, Bar** bars);
+int getBars(char** data, Bar** bars, Node* nodes, int n);
 
 /* Recorre los datos recibidos, correspondientes a las cargas de la estructura, y
 los interpreta en un arreglo de estructuras Weight, el cual guarda en el
 parámetro weights. Devuelve la cantidad de cargas interpretadas. */
-int getWeights(char** data, Weight** weights);
+int getWeights(char** data, Weight** weights, Node* nodes, int n);
 
 /* Recorre los datos recibidos, correspondientes a los apoyos de la estructura,
 y los  interpreta en un arreglo de estructuras Support, el cual guarda en el
 parámetro supports. Devuelve la cantidad de apoyos interpretados */
-int getSupports(char** data, Support** supports);
+int getSupports(char** data, Support** supports, Node* nodes, int n);
 
 #endif
