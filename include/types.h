@@ -1,5 +1,11 @@
 // structs
 
+/* La estructura Node contiene la información de un nodo de la estructura plana,
+esto es, sus coordenadas */
+typedef struct node {
+  double x, y;
+} Node;
+
 /* La estructura Weight contiene la información de una carga sobre la estructura
 plana, la cual incluye un puntero de tipo Node* al nodo donde se deposita la
 carga y un valor decimal correspondiente a la fuerza en kilonewtons */
@@ -15,12 +21,6 @@ typedef struct bar {
   Node *origin, *dest;
   double force;
 } Bar;
-
-/* La estructura Node contiene la información de un nodo de la estructura plana,
-esto es, sus coordenadas */
-typedef struct node {
-  double x, y;
-} Node;
 
 /* La estructura Support contiene un puntero de tipo Node* el cual apunta al
 nodo que  se  apoya,  si  el  apoyo  es  fijo  o  móvil,  y  las  fuerzas  de
