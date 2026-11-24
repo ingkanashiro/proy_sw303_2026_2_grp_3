@@ -10,6 +10,6 @@ if not exist "lib\win\libraylib.a" (
 
 if not exist "bin" mkdir "bin"
 
-gcc "src/main.c" -I"lib" -L"lib/win" -lraylib -lgdi32 -lwinmm -static -Wall -Wextra -o "bin/main.exe"
+gcc "src/*.c" -I"include" -I"lib" -I"src" -L"lib/win" -lraylib -lgdi32 -lwinmm -static -Wall -Wextra -o "bin/main.exe"
 
 :: correr asi nomas, usualmente ./build.bat
