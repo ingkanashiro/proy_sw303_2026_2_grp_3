@@ -19,3 +19,11 @@ int isBalanced(Weight* weights, int w, Support* supports, int s) {
   // sumarlas aqui we dont use axial forces since theyll cancel out anyways,
   // so its not necessary really to add them here
 }
+
+int analyseIsostatic(int nodes, int bars, int reactions) {
+
+};
+
+int evalSystem(Data* data, int nodes, int bars, int reactions) {
+  
+};
