@@ -45,32 +45,13 @@ int main(int argc, char **argv) {
       // nay
     }
 
-    int n = 3;
-    double* A = calloc(n * n, sizeof(double));
-    A[0] = 2.0f;
-    A[1] = 3.0f;
-    A[2] = -1.0f;
-    A[3] = 4.0f;
-    A[4] = -1.0f;
-    A[5] = 2.0f;
-    A[6] = -1.0f;
-    A[7] = 5.0f;
-    A[8] = 3.0f;
-    printf("%lf\n", determinant(A, n));
-    double* x = malloc(n * sizeof(double));
-    double* B = calloc(n, sizeof(double));
-    B[0] = -9.0;
-    B[1] = 2.0;
-    B[2] = 17.0;
-    solveSystem(A, &x, B, n);
+    evalSystem(&data);
 
     // imprime los valores de las variables
     for (int i = 0; i < n; i++) {
       printf("x[%d] = %lf\n", i, x[i]);
     }
 
-    free(A);
-    free(x);
-    free(B);
+    
     return 0;
 }

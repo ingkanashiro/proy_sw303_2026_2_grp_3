@@ -15,7 +15,6 @@ y el número de reacciones y verifica que existan dos ecuaciones por cada nodo
 
   La función devolverá 0 si el análisis resulta en un caso isostático, 1 si
 resulta en un caso hiperstático y -1 si resulta en un caso hipostático */
-
 int analyseIsostatic(int nodes, int bars, int reactions);
 
 /* Recibe  todos  los  datos  del  sistema  y  evalúa  el  sistema  de
@@ -24,6 +23,6 @@ ordenadas: primero todas las fuerzas internas de las barras, seguidas de todas
 las reacciones
 
   La función devolverá 1 en caso de éxito y 0 en caso de fallar */
-int evalSystem(Data* data, int nodes, int bars, int reactions);
+int evalSystem(Data* data, int reactions);
 
 #endif
