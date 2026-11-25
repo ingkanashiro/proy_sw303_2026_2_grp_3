@@ -153,9 +153,9 @@ int solveSystem(double* A, double** x, double* B, int n) {
   // O(n√m)
 
   // eliminacion normal, sera optimizada con lo de arriba despues (O(n^3))
-  int o = 0;
+  int offset = 0;
   for (int k = 0; k < n; k++) {
-    int last = n - 1 - o;
+    int last = n - 1 - offset;
 
     double max = 0.0;
     int maxIdx = 0;
@@ -167,7 +167,10 @@ int solveSystem(double* A, double** x, double* B, int n) {
     }
 
     if (max < 1e-12) return 0;  // CU04
-    if (determinant(A, n) < 1e-6) return 0; // CU04
+
+    double det = determinant(A, n);
+
+    if (det < 1e-9 && det > -1e-9) return 0; // CU04
 
     if (maxIdx != last) {
       for (int m = 0; m < n; m++) {
@@ -186,7 +189,7 @@ int solveSystem(double* A, double** x, double* B, int n) {
       }
       B[l] -= factor * B[last];
     }
-    o++;
+    offset++;
   }
 
   for (int i = 0; i < n; i++) {
