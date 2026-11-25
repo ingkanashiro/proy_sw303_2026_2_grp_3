@@ -10,7 +10,7 @@ elementos
   La salida son los n valores correspondientes a las variables en x. La función
 escribe  los  resultados  en  el  arreglo  x.  La  función  devolverá  1 si el
 sistema puede resolverse, y 0 en caso contrario */
-int solveSystem(double* A, int n, double** x, double* B);
+int solveSystem(double* A, double** x, double* B, int n);
 
 double determinant(double *A, int n);
 

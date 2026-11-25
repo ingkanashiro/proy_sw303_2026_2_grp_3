@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
     B[0] = -9.0;
     B[1] = 2.0;
     B[2] = 17.0;
-    solveSystem(A, n, &x, B);
+    solveSystem(A, &x, B, n);
 
     // imprime los valores de las variables
     for (int i = 0; i < n; i++) {

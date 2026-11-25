@@ -68,7 +68,7 @@ double determinant(double* A, int n) {
   return s;
 };
 
-int solveSystem(double* A, int n, double** x, double* B) {
+int solveSystem(double* A, double** x, double* B, int n) {
   // validar n > 0
   // asumimos A cuadrado (confia)
   // mediante axioma de transitivdad, `determinant` tambien confia
