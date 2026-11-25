@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// !! NO TOQUES ESTE CODIGO
+// !! ME COSTO UN DIA ENTERO DEMOSTRAR DULMAGE MENDELSOHN
+// !! SI HAY BUGS HAY QUE VERLOS AHORITA, PORQUE EN UNA SEMANA SE ME VA OLVIDAR COMO HICE TODO ESTO
+// ?? HORAS GASTADAS: 21 HORAS
+
 /*
 typedef struct GraphNode {
   int index;
