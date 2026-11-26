@@ -121,5 +121,21 @@ int evalSystem(Data* data) {
   return 1;
 }
 
-double cosBetween(Node A, Node B) { return 1.0; };
-double sinBetween(Node A, Node B) { return 1.0; };
+double cosBetween(Node A, Node B) {
+  double dx = B.x - A.x;
+  double dy = B.y - A.y;
+  double L=sqrt(pow(dx,2) + pow(dy,2));
+  if(L<1e-9){
+    return 0.0;
+  }
+  return dx/L;
+};
+double sinBetween(Node A, Node B) {
+  double dx = B.x - A.x;
+  double dy = B.y - A.y;
+  double L = sqrt(dx*dx + dy*dy);
+  if(L <1e-9){
+    return 0.0;
+  }
+  return dy/L;
+};
