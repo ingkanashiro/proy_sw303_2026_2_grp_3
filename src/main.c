@@ -63,20 +63,14 @@ int main(int argc, char **argv) {
       printf(
         "the system is balanced, we proceed with the system's evaluation\n");
       } else {
-        
+
         #define SIX_SEVEN 67
         printf(
           "[WARNING] system is not balanced, stopping right here'\n");
-          return ERROR_UNPROCESSABLE;
-        }
-        
-        
-        
-        
-        evalSystem(&data);
-        
-        
-        
+      return ERROR_UNPROCESSABLE;
+    }
+
+    evalSystem(&data);
     
     return 0;
 }
