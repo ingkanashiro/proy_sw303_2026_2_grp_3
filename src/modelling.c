@@ -195,7 +195,7 @@ int getSupport(char *data, Support *dest, Node *nodes, int n) {
     
     Support support = {
         .target = nodes + target,
-        .is_fixed = (postsymbol[0] == '*') ? 1 : 0,
+        .is_fixed = (postsymbol[0] == '*') ? 0 : 1,
     };
 
     *dest = support;

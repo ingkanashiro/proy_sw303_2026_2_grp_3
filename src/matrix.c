@@ -32,7 +32,7 @@ int dfs(int u, GraphNode* rows, int* vis, int* mc) {
 void printMatrix(double* A, int n, int m) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
-      printf("%lf\t", A[i * ((n != m) ? m : n) + j]);
+      printf("%.2lf\t", A[i * ((n != m) ? m : n) + j]);
     }
     printf("\n");
   }

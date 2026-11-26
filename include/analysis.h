@@ -1,6 +1,7 @@
 #ifndef ANALYSIS_H
 #define ANALYSIS_H
 
+#include "matrix.h"
 #include "types.h"
 
 /* Recibe  la  información  segmentada  y  determina  si  la  estructura  cumple
