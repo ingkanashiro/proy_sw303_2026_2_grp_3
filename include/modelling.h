@@ -26,31 +26,4 @@ int getWeight(char* data, Weight* dest, Node* nodes, int n);
 Nodo correspondiente */
 int getSupport(char* data, Support* dest, Node* nodes, int n);
 
-
-//   ____    _____   ____    ____    _____    ____      _      _____   _____   ____ 
-// |  _ \  | ____| |  _ \  |  _ \  | ____|  / ___|    / \    |_   _| | ____| |  _ \ 
-// | | | | |  _|   | |_) | | |_) | |  _|   | |       / _ \     | |   |  _|   | | | |
-// | |_| | | |___  |  __/  |  _ <  | |___  | |___   / ___ \    | |   | |___  | |_| |
-// |____/  |_____| |_|     |_| \_\ |_____|  \____| /_/   \_\   |_|   |_____| |____/ 
-
-/* Recorre los datos recibidos, correspondientes a los nodos de la estructura, y
-los interpreta  en un arreglo de estructuras Node, el cual guarda en el
-parámetro nodes. Devuelve la cantidad de nodos interpretados */
-int getNodes(char** data, Node** nodes);
-
-/* Recorre los datos recibidos, correspondientes a las barras de la estructura,
-y los interpreta  en  un  arreglo  de  estructuras  Bar,  el  cual  guarda  en
-el  parámetro  bars. Devuelve la cantidad de barras interpretadas */
-int getBars(char** data, Bar** bars, Node* nodes, int n);
-
-/* Recorre los datos recibidos, correspondientes a las cargas de la estructura, y
-los interpreta en un arreglo de estructuras Weight, el cual guarda en el
-parámetro weights. Devuelve la cantidad de cargas interpretadas. */
-int getWeights(char** data, Weight** weights, Node* nodes, int n);
-
-/* Recorre los datos recibidos, correspondientes a los apoyos de la estructura,
-y los  interpreta en un arreglo de estructuras Support, el cual guarda en el
-parámetro supports. Devuelve la cantidad de apoyos interpretados */
-int getSupports(char** data, Support** supports, Node* nodes, int n);
-
 #endif
