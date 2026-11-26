@@ -34,10 +34,6 @@ Data interpretData(char** data) {
         }
         
         if (data[i][0] == ' ' || data[i][0] == '\t') {
-            int status;
-            int argi1, argi2;
-            double argf1, argf2;
-            char *args1;
 
             if (n == 0 && read_mode != R_NODES && read_mode != R_NOTDEF) {
                 printf("[ERROR] Nodes section (n) must be declared first.\n");
@@ -46,47 +42,40 @@ Data interpretData(char** data) {
 
             switch (read_mode) {
                 case R_NODES:
-
-                    n = getNodes(data + i, &nodes);
-
-                    if (n == -1) {
-                        kill_switch = 1; 
+                    if (!getNode(data[i], nodes + n)) {
+                        printf("(explodes)\n\n");
+                        kill_switch = 1;
                     }
 
-                    i += (n-1);
+                    n++;
+
                     break;
 
                 case R_BARS:
-                    
-                    b = getBars(data + i, &bars, nodes, n);
-
-                    if (b == -1) {
-                        kill_switch = 1; 
+                    if (!getBar(data[i], bars + b, nodes, n)) {
+                        printf("(explodes)\n\n");
+                        kill_switch = 1;
                     }
 
-                    i += (b-1);
+                    b++;
                     break;
 
                 case R_WEIGHTS:
-
-                    w = getWeights(data + i, &weights, nodes, n);
-
-                    if (w == -1) {
-                        kill_switch = 1; 
+                    if (!getWeight(data[i], weights + w, nodes, n)) {
+                        printf("(explodes)\n\n");
+                        kill_switch = 1;
                     }
 
-                    i += (w-1);
+                    w++;
                     break;
 
                 case R_SUPPORTS:
-
-                    s = getSupports(data + i, &supports, nodes, n);
-
-                    if (s == -1) {
-                        kill_switch = 1; 
+                    if (!getSupport(data[i], supports + s, nodes, n)) {
+                        printf("(explodes)\n\n");
+                        kill_switch = 1;
                     }
 
-                    i += (s-1);
+                    s++;
                     break;
 
                 case R_NOTDEF:
@@ -125,142 +114,90 @@ Data interpretData(char** data) {
     return out;
 }
 
-/* Recorre los datos recibidos, correspondientes a los nodos de la estructura, y
-los interpreta  en un arreglo de estructuras Node, el cual guarda en el
-parámetro nodes. Devuelve la cantidad de nodos interpretados */
-int getNodes(char** data, Node** nodes) {
-    int i = 0;
-
-    while (data[i] != NULL && data[i][0] != ' ' && data[i][0] != '\t') {
-
-        if (i > MAX_NODES) {
-            printf("[ERROR] Input for Node is out of bounds. Maximum is %d entries.\n", MAX_NODES);
-            return -1;
-        } 
-
-        double x, y;
+int getNode(char *data, Node *dest) {
+    double x, y;
         
-        int status = sscanf(data[i], "%lf %lf", &x, &y);
-        if (status < 2) {
-            printf("[ERROR] Input for Node expected 2 arguments, but got %d.\n", status);
-            return -1;
-        }
-        
-        Node node = {
-            x, y
-        };
-
-        *nodes[i] = node;
-
-        i++;
+    int status = sscanf(data, "%lf %lf", &x, &y);
+    if (status < 2) {
+        printf("[ERROR] Input for Node expected 2 arguments, but got %d.\n", status);
+        return 0;
     }
+    
+    Node node = {
+        x, y
+    };
 
-    return ++i;
+    *dest = node;
+    return 1;
 }
 
-int getBars(char** data, Bar** bars, Node* nodes, int n) {
-    int i = 0;
-
-    while (data[i] != NULL && data[i][0] != ' ' && data[i][0] != '\t') {
+int getBar(char *data, Bar *dest, Node *nodes, int n) {
+    int origin, destination;
         
-        if (i > MAX_BARS) {
-            printf("[ERROR] Input for Bar is out of bounds. Maximum is %d entries.\n", MAX_BARS);
-            return -1;
-        } 
-        
-        int origin, dest;
-        
-        int status = sscanf(data[i], "%d %d", &origin, &dest);
-        if (status < 2) {
-            printf("[ERROR] Input for Bar expected 2 arguments, but got %d.\n", status);
-            return -1;
-        }
-
-        if (origin >= n || dest >= n) {
-            printf("[ERROR] Invalid argument for Bar. No such node exists.\n");
-            return -1;
-        }
-
-        Bar bar = {
-            .origin = nodes + origin,
-            .dest = nodes + dest 
-        };
-
-        *bars[i] = bar;
-        i++;
+    int status = sscanf(data, "%d %d", &origin, &destination);
+    if (status < 2) {
+        printf("[ERROR] Input for Bar expected 2 arguments, but got %d.\n", status);
+        return 0;
     }
 
-    return ++i;
+    if (origin >= n || destination >= n) {
+        printf("[ERROR] No such node exists.\n");
+        return 0;
+    }
+    
+    Bar bar = {
+        .origin = nodes + origin,
+        .dest = nodes + destination
+    };
+
+    *dest = bar;
+    return 1;
 }
 
-int getWeights(char** data, Weight** weights, Node* nodes, int n) {
-    int i = 0;
-
-    while (data[i] != NULL && data[i][0] != ' ' && data[i][0] != '\t') {
+int getWeight(char *data, Weight *dest, Node *nodes, int n) {
+    int origin;
+    double force;
         
-        if (i > MAX_WEIGHTS) {
-            printf("[ERROR] Input for Weight is out of bounds. Maximum is %d entries.\n", MAX_WEIGHTS);
-            return -1;
-        } 
-
-        int origin;
-        double force;
-
-        int status = sscanf(data[i], "%d %lf", &origin, &force);
-        if (status < 2) {
-            printf("[ERROR] Input for Weight expected 2 arguments, but got %d.\n", status);
-            return -1;
-        }
-
-        if (origin > n) {
-            printf("[ERROR] Invalid argument for Weight. No such node exists.\n");
-            return -1;
-        }
-
-        Weight weight = {
-            nodes + origin,
-            force
-        };
-
-        *weights[i] = weight;
-        i++;
+    int status = sscanf(data, "%d %lf", &origin, &force);
+    if (status < 2) {
+        printf("[ERROR] Input for Weight expected 2 arguments, but got %d.\n", status);
+        return 0;
     }
 
-    return ++i;
+    if (origin >= n) {
+        printf("[ERROR] No such node exists.\n");
+        return 0;
+    }
+    
+    Weight weight = {
+        .origin = nodes + origin,
+        .force = force,
+    };
+
+    *dest = weight;
+    return 1;
 }
 
-int getSupports(char** data, Support** supports, Node* nodes, int n) {
-    int i = 0;
+int getSupport(char *data, Support *dest, Node *nodes, int n) {
+    int target;
+    char postsymbol[2] = "";
 
-    while (data[i] != NULL && data[i][0] != ' ' && data[i][0] != '\t') {
-
-        if (i > MAX_SUPPORTS) {
-            printf("[ERROR] Input for Support is out of bounds. Maximum is %d entries.\n", MAX_SUPPORTS);
-            return -1;
-        } 
-
-        int target;
-        char *mark = NULL;
-
-        int status = sscanf(data[i], "%d %s", &target, mark);
-        if (status < 1) {
-            printf("[ERROR] Input for Support expected 1 argument, but got %d.\n", status);
-            return -1;
-        }
-
-        if (target > n) {
-            printf("[ERROR] Invalid argument for Support. No such node exists.\n");
-            return -1;
-        }
-
-        Support support = {
-            .target = nodes + target,
-            .is_fixed = (mark[0] == '*') ? 0 : 1
-        };
-
-        *supports[i] = support;
-        i++;
+    int status = sscanf(data, "%d %1[^\n]", &target, postsymbol);
+    if (status < 1) {
+        printf("[ERROR] Input for Support expected 1 arguments, but got %d.\n", status);
+        return 0;
     }
 
-    return ++i;
+    if (target >= n) {
+        printf("[ERROR] No such node exists.\n");
+        return 0;
+    }
+    
+    Support support = {
+        .target = nodes + target,
+        .is_fixed = (postsymbol[0] == '*') ? 1 : 0,
+    };
+
+    *dest = support;
+    return 1;
 }

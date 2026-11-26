@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "../include/matrix.h";
+#include "../include/matrix.h"
 
 #define EPSILON 1e-6
 
@@ -15,7 +15,7 @@ int isBalanced(Weight* weights, int w, Support* supports, int s) {
     return -1;  // CU08
   double net_force[2] = {0.0, 0.0};
   for (int i = 0; i < w; i++)
-    net_force[1] +=
+    net_force[1] +=         // ?? posible bug pq @modeling esta implementandolo como si fuera modulo
         weights[i].force;  // asumimos que esa fuerza SIEMPRE sera negativa
   for (int i = 0; i < s; i++) {
     net_force[0] += supports[i].reaction_x;
@@ -76,7 +76,7 @@ int evalSystem(Data* data) {
       if (data->bars[j].dest == (data->nodes+i)) {
         for (int k = 0; k < data->b; k++) {
           // printf("wa.%d.%d.%d\n", i, j, k);
-          if (idxBars[k] = &(data->bars[j])) {
+          if ((idxBars[k] = &(data->bars[j]))) {
             // printf("wa.if\n", i, j, k);
             A[i * n + j] =
             cosBetween(*(data->bars[j].origin), *(data->bars[j].dest));
@@ -94,7 +94,7 @@ int evalSystem(Data* data) {
       if (data->supports[j].target == &(data->nodes[i])) {
         for (int k = 0; k < data->s; k++) {
           // printf("wa.%d.%d.%d\n", i, j, k);
-          if (idxSupports[k] = &(data->supports[j])) {
+          if ((idxSupports[k] = &(data->supports[j]))) {
             if (data->supports[j].is_fixed)
               A[(r++) * n + j] = 1;  // direccion x
             A[(r++) * n + j] = 1;    // direccion y

@@ -10,7 +10,8 @@
 #define ERROR_NOT_FOUND 404
 #define ERROR_IM_A_TEAPOT 418
 #define ERROR_UNPROCESSABLE 422
-#define SUCCESS 200
+#define SUCCESS 200 // no lo podemos usar xd, retorniariamos main temprano
+#define SIX_SEVEN 67
 
 int main(int argc, char **argv) {
     FILE *file;
@@ -33,11 +34,29 @@ int main(int argc, char **argv) {
 
     char **raw_data = (char **)malloc(2048 * 256 * sizeof(char));
     fetchData(file, &raw_data);
+
+    // TEST FOR RAW DATA
+    // for (int i = 0; raw_data[i] != NULL; i++) {
+    //     printf("%s", raw_data[i]);
+    // }
+
     Data data = interpretData(raw_data);
+
+    // TEST FOR INTERPRETTED DATA
+    // printf("INPUT RETRIEVED:\n");
+    // printf("%d\n", data.n);
+    // printf("%d\n", data.b);
+    // printf("%d\n", data.w);
+    // printf("%d\n", data.s);
+    
+    // printf("\n\nNODES RETRIEVED:\n");
+    // for (int i = 0; i < 5; i++) {
+    //     printf("node %d: (%f, %f)\n", i, data.nodes[i].x, data.nodes[i].x);
+    // }
 
     int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
     if (balanced == -1) {
-      printf("[ERROR] Cannot know the state of system, amount of weights or supports might be incorrect'\n");
+      printf("[ERROR] cannot know the state of system, amount of weights or supports might be incorrect'\n");
       return ERROR_UNPROCESSABLE;
     }
 
@@ -47,12 +66,11 @@ int main(int argc, char **argv) {
     } else {
       printf(
           "[WARNING] system is not balanced, stopping right here'\n");
-      return ERROR_FORBIDDEN; 
+      return ERROR_UNPROCESSABLE;
     }
-    printf("%d\n", data.n);
-    printf("%d\n", data.b);
-    printf("%d\n", data.s);
-    printf("%d\n", data.w);
+
+    
+
 
     evalSystem(&data);
 
