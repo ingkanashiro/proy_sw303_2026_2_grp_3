@@ -3,19 +3,19 @@
 ## funcionalidades
 
 ### entrada
-- [ ] leer la geometria de la armadura
-- [ ] leer coordenadas de nodos
-- [ ] leer conectividad de barras
+- [x] leer la geometria de la armadura
+- [x] leer coordenadas de nodos
+- [x] leer conectividad de barras
 
 ### registro
-- [ ] registrar cargas externas
-- [ ] registrar condiciones de apoyo
+- [x] registrar cargas externas
+- [x] registrar condiciones de apoyo
 
 ### calculos
-- [ ] calcular reacciones mediante las ecuaciones de equilibrio
-- [ ] resolver el sistema de ecuaciones lineales mediante eliminacion gaussiana
-- [ ] calcular la fuerza axial de cada barra luego clasificarla como traccion o compresion
-- [ ] detectar modelos invalidos o sistemas sin sol. unica
+- [x] calcular reacciones mediante las ecuaciones de equilibrio
+- [x] resolver el sistema de ecuaciones lineales mediante eliminacion gaussiana
+- [x] calcular la fuerza axial de cada barra luego clasificarla como traccion o compresion
+- [x] detectar modelos invalidos o sistemas sin sol. unica
 
 ### salida
 - [ ] generar un reporte csv con las fuerzas calculadas
