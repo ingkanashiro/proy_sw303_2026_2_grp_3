@@ -124,7 +124,7 @@ int evalSystem(Data* data) {
 double cosBetween(Node A, Node B) {
   double dx = B.x - A.x;
   double dy = B.y - A.y;
-  double L=sqrt(pow(dx,2) + pow(dy,2));
+  double L=sqrt(dx*dx + dy*dy);
   if(L<1e-9){
     return 0.0;
   }
