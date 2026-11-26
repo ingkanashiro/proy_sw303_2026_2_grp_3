@@ -16,4 +16,6 @@ int solveSystem(double* A, double** x, double* B, int n);
 resultado del cálculo */
 double determinant(double *A, int n);
 
+void printMatrix(double* A, int n, int m);
+
 #endif

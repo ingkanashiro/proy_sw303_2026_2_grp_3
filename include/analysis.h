@@ -23,6 +23,6 @@ ordenadas: primero todas las fuerzas internas de las barras, seguidas de todas
 las reacciones
 
   La función devolverá 1 en caso de éxito y 0 en caso de fallar */
-int evalSystem(Data* data, int reactions);
+int evalSystem(Data* data);
 
 #endif

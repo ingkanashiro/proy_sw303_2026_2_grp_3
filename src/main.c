@@ -9,6 +9,8 @@
 #define ERROR_FORBIDDEN 403
 #define ERROR_NOT_FOUND 404
 #define ERROR_IM_A_TEAPOT 418
+#define ERROR_UNPROCESSABLE 422
+#define SUCCESS 200
 
 int main(int argc, char **argv) {
     FILE *file;
@@ -36,21 +38,26 @@ int main(int argc, char **argv) {
     int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
     if (balanced == -1) {
       printf("[ERROR] Cannot know the state of system, amount of weights or supports might be incorrect'\n");
-      return ERROR_FORBIDDEN; // FORBIDDEN de manera provisional
+      return ERROR_UNPROCESSABLE; // FORBIDDEN de manera provisional
     }
 
     if (balanced) {
-      // yay
+      printf(
+          "the system is balanced, we proceed with the system's evaluation'\n");
+      return SUCCESS;  // FORBIDDEN de manera provisional
     } else {
-      // nay
+      printf(
+          "[WARNING] system is not balanced, stopping right here'\n");
+      return ERROR_FORBIDDEN; 
     }
+    printf("%d\n", data.n);
+    printf("%d\n", data.b);
+    printf("%d\n", data.s);
+    printf("%d\n", data.w);
 
     evalSystem(&data);
 
-    // imprime los valores de las variables
-    for (int i = 0; i < n; i++) {
-      printf("x[%d] = %lf\n", i, x[i]);
-    }
+    
 
     
     return 0;

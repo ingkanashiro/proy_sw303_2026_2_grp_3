@@ -27,6 +27,7 @@ int dfs(int u, GraphNode* rows, int* vis, int* mc) {
   }
   return 0;
 }
+*/
 
 void printMatrix(double* A, int n, int m) {
   for (int i = 0; i < n; i++) {
@@ -36,7 +37,6 @@ void printMatrix(double* A, int n, int m) {
     printf("\n");
   }
 }
-  */
 
 double determinant(double* A, int n) {
   if (n == 3)
