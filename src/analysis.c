@@ -29,7 +29,7 @@ int isBalanced(Weight* weights, int w, Support* supports, int s) {
 
 int analyseIsostatic(int nodes, int bars, int reactions) {
   return ((2 * nodes > bars + reactions) ? -1 : (2 * nodes < bars + reactions));
-};
+}
 
 int evalSystem(Data* data) {
   // primero analizar isoestaticidad, solo si es isostatico proceder
@@ -129,7 +129,7 @@ double cosBetween(Node A, Node B) {
     return 0.0;
   }
   return dx/L;
-};
+}
 double sinBetween(Node A, Node B) {
   double dx = B.x - A.x;
   double dy = B.y - A.y;
@@ -138,4 +138,4 @@ double sinBetween(Node A, Node B) {
     return 0.0;
   }
   return dy/L;
-};
+}
