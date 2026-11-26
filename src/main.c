@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
 
     if (balanced) {
       printf(
-          "the system is balanced, we proceed with the system's evaluation'\n");
+          "the system is balanced, we proceed with the system's evaluation\n");
     } else {
       printf(
           "[WARNING] system is not balanced, stopping right here'\n");
