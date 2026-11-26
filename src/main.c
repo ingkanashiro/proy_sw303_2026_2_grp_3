@@ -69,13 +69,7 @@ int main(int argc, char **argv) {
       return ERROR_UNPROCESSABLE;
     }
 
-    
-
-
     evalSystem(&data);
-
-    
-
     
     return 0;
 }
