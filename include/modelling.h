@@ -10,6 +10,29 @@ una estructura de tipo Data, la cual almacenará la información seccionada por
 tipo en cuatro arreglos de estructuras Node, Bar, Weight y Support */
 Data interpretData(char** data);
 
+/* Analiza una línea de datos sin procesar y devuelve la estructura 
+Nodo correspondiente */
+int getNode(char* data, Node* dest);
+
+/* Analiza una línea de datos sin procesar y devuelve la estructura 
+Nodo correspondiente */
+int getBar(char* data, Bar* dest, Node* nodes, int n);
+
+/* Analiza una línea de datos sin procesar y devuelve la estructura 
+Nodo correspondiente */
+int getWeight(char* data, Weight* dest, Node* nodes, int n);
+
+/* Analiza una línea de datos sin procesar y devuelve la estructura 
+Nodo correspondiente */
+int getSupport(char* data, Support* dest, Node* nodes, int n);
+
+
+//   ____    _____   ____    ____    _____    ____      _      _____   _____   ____ 
+// |  _ \  | ____| |  _ \  |  _ \  | ____|  / ___|    / \    |_   _| | ____| |  _ \ 
+// | | | | |  _|   | |_) | | |_) | |  _|   | |       / _ \     | |   |  _|   | | | |
+// | |_| | | |___  |  __/  |  _ <  | |___  | |___   / ___ \    | |   | |___  | |_| |
+// |____/  |_____| |_|     |_| \_\ |_____|  \____| /_/   \_\   |_|   |_____| |____/ 
+
 /* Recorre los datos recibidos, correspondientes a los nodos de la estructura, y
 los interpreta  en un arreglo de estructuras Node, el cual guarda en el
 parámetro nodes. Devuelve la cantidad de nodos interpretados */

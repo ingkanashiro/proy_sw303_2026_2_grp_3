@@ -33,7 +33,25 @@ int main(int argc, char **argv) {
 
     char **raw_data = (char **)malloc(2048 * 256 * sizeof(char));
     fetchData(file, &raw_data);
+
+    // TEST FOR RAW DATA
+    // for (int i = 0; raw_data[i] != NULL; i++) {
+    //     printf("%s", raw_data[i]);
+    // }
+
     Data data = interpretData(raw_data);
+
+    // TEST FOR INTERPRETTED DATA
+    // printf("INPUT RETRIEVED:\n");
+    // printf("%d\n", data.n);
+    // printf("%d\n", data.b);
+    // printf("%d\n", data.w);
+    // printf("%d\n", data.s);
+    
+    // printf("\n\nNODES RETRIEVED:\n");
+    // for (int i = 0; i < 5; i++) {
+    //     printf("node %d: (%f, %f)\n", i, data.nodes[i].x, data.nodes[i].x);
+    // }
 
     int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
     if (balanced == -1) {
@@ -49,10 +67,9 @@ int main(int argc, char **argv) {
           "[WARNING] system is not balanced, stopping right here'\n");
       return ERROR_FORBIDDEN; 
     }
-    printf("%d\n", data.n);
-    printf("%d\n", data.b);
-    printf("%d\n", data.s);
-    printf("%d\n", data.w);
+
+    
+
 
     evalSystem(&data);
 

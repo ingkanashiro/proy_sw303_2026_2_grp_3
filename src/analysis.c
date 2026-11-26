@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "../include/matrix.h";
+#include "../include/matrix.h"
 
 #define EPSILON 1e-6
 
