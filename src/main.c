@@ -38,13 +38,12 @@ int main(int argc, char **argv) {
     int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
     if (balanced == -1) {
       printf("[ERROR] Cannot know the state of system, amount of weights or supports might be incorrect'\n");
-      return ERROR_UNPROCESSABLE; // FORBIDDEN de manera provisional
+      return ERROR_UNPROCESSABLE;
     }
 
     if (balanced) {
       printf(
           "the system is balanced, we proceed with the system's evaluation'\n");
-      return SUCCESS;  // FORBIDDEN de manera provisional
     } else {
       printf(
           "[WARNING] system is not balanced, stopping right here'\n");
