@@ -10,7 +10,8 @@
 #define ERROR_NOT_FOUND 404
 #define ERROR_IM_A_TEAPOT 418
 #define ERROR_UNPROCESSABLE 422
-#define SUCCESS 200
+#define SUCCESS 200 // no lo podemos usar xd, retorniariamos main temprano
+
 
 int main(int argc, char **argv) {
     FILE *file;
@@ -37,7 +38,7 @@ int main(int argc, char **argv) {
 
     int balanced = isBalanced(data.weights, data.w, data.supports, data.s);
     if (balanced == -1) {
-      printf("[ERROR] Cannot know the state of system, amount of weights or supports might be incorrect'\n");
+      printf("[ERROR] cannot know the state of system, amount of weights or supports might be incorrect'\n");
       return ERROR_UNPROCESSABLE;
     }
 
@@ -47,12 +48,15 @@ int main(int argc, char **argv) {
     } else {
       printf(
           "[WARNING] system is not balanced, stopping right here'\n");
-      return ERROR_FORBIDDEN; 
+      return ERROR_UNPROCESSABLE;
     }
     printf("%d\n", data.n);
     printf("%d\n", data.b);
     printf("%d\n", data.s);
     printf("%d\n", data.w);
+    printf("%d\n", data.nodes[0].x);
+    printf("%d\n", data.nodes[1].x);
+    printf("%d\n", data.nodes[2].x);
 
     evalSystem(&data);
 
