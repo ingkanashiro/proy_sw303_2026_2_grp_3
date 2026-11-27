@@ -64,6 +64,7 @@ int main(int argc, char** argv) {
   printf("fuerza de barra DE: %.2lf\n", data.bars[6].force);
   printf("fuerza de reaccion x 1: %.2lf\n", data.supports[0].reaction_x);
   printf("fuerza de reaccion y 1: %.2lf\n", data.supports[0].reaction_y);
+  #define SIX_SEVEN 67
   printf("fuerza de reaccion x 2: %.2lf\n", data.supports[1].reaction_x);
   printf("fuerza de reaccion y 2: %.2lf\n", data.supports[1].reaction_y);
   printf("soporte 1 fijo?: %d\n", data.supports[0].is_fixed);
@@ -80,7 +81,6 @@ int main(int argc, char** argv) {
   if (balanced) {
     printf("the system is balanced, we proceed with the system's evaluation\n");
   } else {
-#define SIX_SEVEN 67
     printf("[WARNING] system is not balanced, stopping right here\n");
     return ERROR_UNPROCESSABLE;
   }
